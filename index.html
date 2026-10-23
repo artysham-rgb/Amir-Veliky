@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#10100e">
+<title>Амирляндия | Император Амир Великий</title>
+<style>
+:root {
+    --bg: #0d0d0c;
+    --panel: #191813;
+    --gold: #e6bd63;
+    --light-gold: #ffe6a3;
+    --text: #f4f0e5;
+    --muted: #b9b3a5;
+    --border: rgba(230,189,99,.27);
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html { scroll-behavior: smooth; }
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.75;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(13,13,12,.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+}
+nav {
+    max-width: 1150px;
+    margin: auto;
+    padding: 15px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+}
+.logo {
+    font-size: 23px;
+    font-weight: bold;
+    color: var(--gold);
+    letter-spacing: 1px;
+}
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 17px;
+    font-size: 14px;
+}
+.nav-links a:hover { color: var(--gold); }
+.hero {
+    min-height: 620px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 85px 22px;
+    background:
+        radial-gradient(ellipse at center, rgba(191,139,40,.2), transparent 67%),
+        linear-gradient(180deg, #19160e, #0d0d0c);
+    border-bottom: 1px solid var(--border);
+}
+.hero-inner { max-width: 850px; }
+.eyebrow {
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 12px;
+    margin-bottom: 18px;
+}
+h1 {
+    color: var(--light-gold);
+    font-size: clamp(48px, 9vw, 90px);
+    line-height: 1.08;
+    margin-bottom: 20px;
+}
+.hero p {
+    max-width: 700px;
+    margin: 0 auto 30px;
+    color: var(--muted);
+    font-size: 18px;
+}
+.btn {
+    display: inline-block;
+    padding: 11px 22px;
+    border: 1px solid var(--gold);
+    border-radius: 5px;
+    color: var(--light-gold);
+    background: transparent;
+    font: inherit;
+    cursor: pointer;
+    transition: .2s;
+}
+.btn:hover {
+    background: var(--gold);
+    color: #14110a;
+}
+section {
+    max-width: 1100px;
+    padding: 76px 22px;
+    margin: auto;
+}
+.section-label {
+    color: var(--gold);
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 7px;
+}
+h2 {
+    font-size: clamp(30px, 5vw, 44px);
+    line-height: 1.25;
+    color: var(--light-gold);
+    margin-bottom: 22px;
+}
+h3 {
+    color: var(--gold);
+    font-size: 21px;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+p { margin-bottom: 15px; }
+.muted { color: var(--muted); }
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 28px;
+}
+.card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+}
+.card p:last-child { margin-bottom: 0; }
+.number {
+    color: var(--gold);
+    font-size: 37px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.quote {
+    margin: 27px 0;
+    padding: 23px;
+    border-left: 3px solid var(--gold);
+    background: rgba(230,189,99,.06);
+    color: var(--light-gold);
+    font-size: 21px;
+    font-style: italic;
+}
+.feature {
+    border: 1px solid rgba(230,189,99,.5);
+    background: linear-gradient(135deg, #211d12, #15140f);
+    border-radius: 12px;
+    padding: 30px;
+    margin-top: 25px;
+}
+.feature-date {
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+.feature h3 { font-size: 27px; }
+.timeline { margin-top: 30px; }
+.event {
+    position: relative;
+    border-left: 2px solid var(--border);
+    padding: 0 0 30px 25px;
+}
+.event::before {
+    content: "";
+    position: absolute;
+    left: -7px;
+    top: 9px;
+    width: 12px;
+    height: 12px;
+    background: var(--gold);
+    border-radius: 50%;
+}
+.event-date {
+    color: var(--gold);
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+form {
+    display: grid;
+    gap: 12px;
+    margin-top: 20px;
+}
+input, textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    background: #10100d;
+    color: var(--text);
+    font: inherit;
+}
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+.notice {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 15px;
+}
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 15px;
+    margin-top: 25px;
+}
+.gallery-item {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--panel);
+}
+.gallery-item img {
+    width: 100%;
+    height: 210px;
+    display: block;
+    object-fit: cover;
+}
+.gallery-caption {
+    padding: 12px;
+    overflow-wrap: anywhere;
+    color: var(--light-gold);
+}
+.delete-btn {
+    margin: 0 12px 12px;
+    padding: 6px 10px;
+    border: 1px solid #a66e6e;
+    background: transparent;
+    color: #f0b2b2;
+    cursor: pointer;
+    border-radius: 4px;
+}
+footer {
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding: 35px 20px;
+    color: var(--muted);
+    font-size: 13px;
+}
+footer strong { color: var(--gold); }
+@media (max-width: 760px) {
+    nav { flex-direction: column; }
+    .nav-links { justify-content: center; gap: 9px 14px; }
+    .grid { grid-template-columns: 1fr; }
+    .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .hero { min-height: 510px; }
+}
+@media (max-width: 420px) {
+    .gallery { grid-template-columns: 1fr; }
+    section { padding-top: 55px; padding-bottom: 55px; }
+    .feature { padding: 21px; }
+}
+</style>
+</head>
+<body>
+<header>
+<nav>
+    <a class="logo" href="#home">АМИРЛЯНДИЯ</a>
+    <div class="nav-links">
+        <a href="#state">Империя</a>
+        <a href="#emperor">Император</a>
+        <a href="#reforms">Реформы</a>
+        <a href="#legend">Легенда</a>
+        <a href="#history">Летопись</a>
+        <a href="#gallery">Галерея</a>
+    </div>
+</nav>
+</header>
+<main>
+<div class="hero" id="home">
+    <div class="hero-inner">
+        <div class="eyebrow">Официальная императорская летопись</div>
+        <h1>Амирляндия</h1>
+        <p>
+            История великой империи, необычного государя,
+            масштабных реформ и событий, которые навсегда
+            вошли в народные предания.
+        </p>
+        <a class="btn" href="#emperor">История Амира Великого</a>
+    </div>
+</div>
+<section id="state">
+    <div class="section-label">Глава I</div>
+    <h2>Империя Амирляндия</h2>
+<p>
+    Амирляндия — вымышленное государство со своей политической
+    системой, историей, законами и традициями. Во главе
+    государства стоит император Амир Великий, чьё правление
+    стало временем громких заявлений, реформ и исторических
+    поворотов.
+</p>
+<p>
+    Столица империи — Златоград. В городе расположены
+    Императорский дворец, Государственная дума, центральная
+    площадь и Главный архив летописей. Именно здесь хранятся
+    документы о важнейших событиях страны.
+</p>
+<div class="grid">
+    <div class="card">
+        <div class="number">01</div>
+        <h3>Государство</h3>
+        <p>Амирляндия — империя с собственными законами и учреждениями.</p>
+    </div>
+    <div class="card">
+        <div class="number">02</div>
+        <h3>Столица</h3>
+        <p>Златоград — центр политической жизни и императорской власти.</p>
+    </div>
+    <div class="card">
+        <div class="number">03</div>
+        <h3>Девиз</h3>
+        <p>«Сильный характер, великая история, непоколебимая Амирляндия».</p>
+    </div>
+</div>
+<div class="quote">
+    «История государства начинается с идеи, а великая история —
+    с события, о котором все спорят ещё много лет».
+</div>
+</section>
+<section id="emperor">
+    <div class="section-label">Глава II</div>
+    <h2>Император Амир Великий</h2>
+<p>
+    Амир Великий — легендарный государь Амирляндии.
+    Он известен решительным характером, уверенностью,
+    прямолинейностью и особой манерой общения.
+</p>
+<p>
+    Главная черта императора — он любит обзывать окружающих
+    и редко скрывает своё мнение. Министры никогда не знают,
+    закончится ли очередное совещание одобрением реформы
+    или очередной порцией колких замечаний.
+</p>
+<p>
+    При этом Амир умеет принимать важные решения и не боится
+    менять государственный курс. Его сторонники считают его
+    решительным реформатором, а критики полагают, что его
+    дипломатический стиль заслуживает отдельного учебника.
+</p>
+<div class="grid">
+    <div class="card">
+        <h3>Характер</h3>
+        <p>Прямолинейный, вспыльчивый, уверенный и непредсказуемый.</p>
+    </div>
+    <div class="card">
+        <h3>Стиль правления</h3>
+        <p>Смелые решения, жаркие споры и постоянные попытки навести порядок.</p>
+    </div>
+    <div class="card">
+        <h3>Наследие</h3>
+        <p>Создание Госдумы, социальный закон и события, вошедшие в летописи.</p>
+    </div>
+</div>
+<div class="quote">
+    «Я не собирался становиться императором.
+    Но если уж стал — давайте хотя бы наведём порядок».
+    <br><br>
+    <span class="muted">— Приписывается Амиру Великому</span>
+</div>
+</section>
+<section id="abdication">
+    <div class="section-label">Глава III</div>
+    <h2>Отказ от престола</h2>
+<p>
+    Когда Амира впервые избрали императором, он неожиданно
+    отказался от престола. Государь заявил, что не собирается
+    посвящать всю жизнь бесконечным совещаниям, государственным
+    бумагам и спорам с чиновниками.
+</p>
+<p>
+    Отречение вызвало политический кризис. Временный совет
+    пытался управлять страной, но министры постоянно спорили,
+    а важнейшие решения переносились на неопределённый срок.
+</p>
+<p>
+    После длительных переговоров Амир всё-таки согласился
+    вернуться на престол. Однако на этот раз он потребовал
+    изменить государственную систему и создать учреждения,
+    которые позволят обсуждать решения и контролировать
+    работу чиновников.
+</p>
+<div class="feature">
+    <div class="feature-date">Поворотный момент истории</div>
+    <h3>Возвращение Амира Великого</h3>
+    <p>
+        Возвращение императора стало началом новой эпохи.
+        Амир объявил о создании Государственной думы,
+        введении социального закона и проведении реформ.
+    </p>
+</div>
+</section>
+<section id="reforms">
+    <div class="section-label">Глава IV</div>
+    <h2>Великие реформы</h2>
+<p>
+    После возвращения император представил программу
+    преобразований, направленную на улучшение жизни граждан
+    и создание более организованной государственной системы.
+</p>
+<div class="grid">
+    <div class="card">
+        <h3>Социальный закон</h3>
+        <p>Закрепляет равенство граждан, право на защиту и возможность участвовать в общественной жизни.</p>
+    </div>
+    <div class="card">
+        <h3>Государственная дума</h3>
+        <p>Позволяет депутатам обсуждать законопроекты и представлять интересы населения.</p>
+    </div>
+    <div class="card">
+        <h3>Реформа чиновничества</h3>
+        <p>Предусматривает отчётность государственных служащих и ответственность за принятые решения.</p>
+    </div>
+    <div class="card">
+        <h3>Общественные собрания</h3>
+        <p>Граждане могут выдвигать предложения и обсуждать будущее государства.</p>
+    </div>
+    <div class="card">
+        <h3>Открытые архивы</h3>
+        <p>Важнейшие решения и события заносятся в государственную летопись.</p>
+    </div>
+    <div class="card">
+        <h3>Цифровая империя</h3>
+        <p>Государство постепенно переводит документы и услуги в электронный формат.</p>
+    </div>
+</div>
+<div class="quote">
+    «Даже император должен объяснять свои решения.
+    Хотя бы иногда».
+</div>
+</section>
+<section id="duma">
+    <div class="section-label">Глава V</div>
+    <h2>Государственная дума</h2>
+<p>
+    Государственная дума Амирляндии была учреждена в ходе
+    реформ Амира Великого. Она стала местом, где обсуждаются
+    законы, общественные вопросы и государственные расходы.
+</p>
+<div class="grid">
+    <div class="card">
+        <h3>Законодательная комиссия</h3>
+        <p>Готовит проекты законов и рассматривает поправки.</p>
+    </div>
+    <div class="card">
+        <h3>Комитет общественных дел</h3>
+        <p>Обсуждает образование, городскую жизнь и благополучие граждан.</p>
+    </div>
+    <div class="card">
+        <h3>Комиссия контроля</h3>
+        <p>Проверяет исполнение решений и работу государственных учреждений.</p>
+    </div>
+</div>
+<h3 style="margin-top:30px">Самое знаменитое заседание</h3>
+<p>
+    На одном из первых заседаний депутат предложил создать
+    комиссию по сокращению количества комиссий. Предложение
+    отправили на дополнительное рассмотрение специальной
+    рабочей группы. Так родилась легенда о бесконечной
+    бюрократии Амирляндии.
+</p>
+<p>
+    Император регулярно участвует в обсуждениях и известен
+    тем, что не стесняется критиковать депутатов. Впрочем,
+    по правилам империи у Госдумы остаётся право обсуждать
+    предложения и не соглашаться с государем.
+</p>
+</section>
+<section id="legend">
+    <div class="section-label">Глава VI</div>
+    <h2>Легендарный силовой приём Амира</h2>
+<div class="feature">
+    <div class="feature-date">29 сентября 2026 года</div>
+    <h3>Событие у школы Ступеней</h3>
+    <p>
+        Эта дата навсегда вошла в легендарную хронику
+        Амирляндии. Около школы Ступеней произошло событие,
+        которое в летописях получило название
+        <strong>«Легендарный силовой приём Амира»</strong>.
+    </p>
+    <p>
+        С тех пор дата 29 сентября упоминается в имперских
+        преданиях как день необыкновенного происшествия,
+        которое обросло историями и стало частью местного
+        фольклора.
+    </p>
+    <p>
+        Подробности самого эпизода в официальной летописи
+        не установлены. Поэтому архив сохраняет название
+        события и дату, не приписывая участникам выдуманных
+        действий или последствий.
+    </p>
+    <div class="quote">
+        «Некоторые даты просто отмечают в календаре.
+        Другие становятся легендами».
+    </div>
+    <p class="muted">
+        Архивная запись: 29.09.2026. Место: около школы Ступеней.
+        Название события: «Силовой приём Амира».
+    </p>
+</div>
+</section>
+<section id="government">
+    <div class="section-label">Глава VII</div>
+    <h2>Министерства империи</h2>
+<div class="grid">
+    <div class="card">
+        <h3>Министерство порядка</h3>
+        <p>Следит за исполнением государственных решений.</p>
+    </div>
+    <div class="card">
+        <h3>Министерство финансов</h3>
+        <p>Управляет бюджетом и выясняет, куда исчезла строка расходов «на срочные совещания».</p>
+    </div>
+    <div class="card">
+        <h3>Министерство культуры</h3>
+        <p>Сохраняет традиции и собирает легенды об императоре.</p>
+    </div>
+    <div class="card">
+        <h3>Министерство образования</h3>
+        <p>Отвечает за школы, библиотеки и подготовку будущих деятелей империи.</p>
+    </div>
+    <div class="card">
+        <h3>Министерство дипломатии</h3>
+        <p>Поддерживает отношения с другими государствами и переводит резкие заявления императора на дипломатический язык.</p>
+    </div>
+    <div class="card">
+        <h3>Императорский архив</h3>
+        <p>Хранит документы, хроники и сведения о великих событиях.</p>
+    </div>
+</div>
+</section>
+<section id="history">
+    <div class="section-label">Глава VIII</div>
+    <h2>Летопись Амирляндии</h2>
+<p class="muted">
+    Здесь можно добавлять новые события. Они сохраняются
+    в браузере на этом устройстве.
+</p>
+<div class="timeline" id="timeline"></div>
+<div class="card">
+    <h3>Добавить событие</h3>
+    <form id="eventForm">
+        <input id="eventDate" placeholder="Дата события" required>
+        <input id="eventTitle" placeholder="Название события" required>
+        <textarea id="eventText" placeholder="Описание события" required></textarea>
+        <button class="btn" type="submit">Добавить в летопись</button>
+    </form>
+</div>
+</section>
+<section id="gallery">
+    <div class="section-label">Глава IX</div>
+    <h2>Императорская галерея</h2>
+<p>
+    Добавляй фотографии, изображения дворца, символы
+    Амирляндии и памятные кадры.
+</p>
+<div class="card">
+    <h3>Добавить фотографию</h3>
+    <form id="galleryForm">
+        <input id="photoTitle" placeholder="Название фотографии" required>
+        <input id="photoFile" type="file" accept="image/*" required>
+        <button class="btn" type="submit">Добавить в галерею</button>
+    </form>
+    <p class="notice">
+        Галерея сохраняется в браузере. Добавленные фотографии
+        не загружаются в репозиторий GitHub и не видны автоматически
+        другим посетителям сайта.
+    </p>
+</div>
+<div class="gallery" id="galleryGrid"></div>
+</section>
+<section id="final">
+    <div class="section-label">Заключение</div>
+    <h2>Да здравствует Амирляндия!</h2>
+<div class="quote">
+    «Да здравствует Амирляндия! Да здравствует народ!
+    А теперь кто-нибудь объяснит, почему опять нет чая?»
+</div>
+<p>
+    Амирляндия продолжает развиваться. Государственная дума
+    обсуждает новые проекты, министерства выполняют поручения,
+    архивисты записывают исторические события, а Амир Великий
+    остаётся одной из самых ярких фигур империи.
+</p>
+<p>
+    И пусть впереди ещё много реформ, споров и необычных
+    происшествий — летопись Амирляндии продолжается.
+</p>
+</section>
+</main>
+<footer>
+    <p><strong>АМирляндия</strong> — императорская летопись</p>
+    <p>Император Амир Великий • Государственная дума • История</p>
+    <p>© <span id="year"></span> Архив Амирляндии</p>
+    <p>Вымышленное государство. Исторические материалы сайта являются частью авторского вымысла.</p>
+</footer>
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+const initialEvents = [
+    {
+        date: "Основание государства",
+        title: "Провозглашение Амирляндии",
+        text: "Объявлено о создании государства и начале формирования имперских институтов."
+    },
+    {
+        date: "Избрание императора",
+        title: "Амир отказывается от престола",
+        text: "После избрания Амир неожиданно отказывается от престола. Начинается период политической неопределённости."
+    },
+    {
+        date: "Период временного совета",
+        title: "Эпоха совещаний",
+        text: "Временный совет пытается организовать управление государством. Споры о будущем империи продолжаются."
+    },
+    {
+        date: "Возвращение государя",
+        title: "Амир Великий возвращается",
+        text: "Амир соглашается вновь занять престол при условии проведения государственных реформ."
+    },
+    {
+        date: "Великие реформы",
+        title: "Создание Государственной думы",
+        text: "В империи учреждается Госдума для обсуждения законов и общественных вопросов."
+    },
+    {
+        date: "Социальные преобразования",
+        title: "Принятие нового социального закона",
+        text: "Объявлены новые правила, касающиеся прав граждан и ответственности государственных служащих."
+    },
+    {
+        date: "29 сентября 2026 года",
+        title: "Легендарный силовой приём Амира",
+        text: "Около школы Ступеней произошло событие, вошедшее в легендарную хронику Амирляндии. Подробности эпизода не установлены."
+    }
+];
+function loadEvents() {
+    try {
+        const saved = localStorage.getItem("amirlandia_events_v2");
+        return saved ? JSON.parse(saved) : initialEvents;
+    } catch (error) {
+        return initialEvents;
+    }
+}
+let events = loadEvents();
+function saveEvents() {
+    try {
+        localStorage.setItem("amirlandia_events_v2", JSON.stringify(events));
+        return true;
+    } catch (error) {
+        alert("Не удалось сохранить событие в браузере.");
+        return false;
+    }
+}
+function renderEvents() {
+    const timeline = document.getElementById("timeline");
+    timeline.innerHTML = "";
+    events.forEach((event, index) => {
+        const item = document.createElement("div");
+        item.className = "event";
+        const date = document.createElement("div");
+        date.className = "event-date";
+        date.textContent = event.date;
+        const title = document.createElement("h3");
+        title.textContent = event.title;
+        const description = document.createElement("p");
+        description.textContent = event.text;
+        item.append(date, title, description);
+        if (event.custom) {
+            const button = document.createElement("button");
+            button.className = "delete-btn";
+            button.textContent = "Удалить событие";
+            button.addEventListener("click", () => {
+                events.splice(index, 1);
+                saveEvents();
+                renderEvents();
+            });
+            item.appendChild(button);
+        }
+        timeline.appendChild(item);
+    });
+}
+document.getElementById("eventForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    events.push({
+        date: document.getElementById("eventDate").value.trim(),
+        title: document.getElementById("eventTitle").value.trim(),
+        text: document.getElementById("eventText").value.trim(),
+        custom: true
+    });
+    if (saveEvents()) {
+        renderEvents();
+        this.reset();
+    }
+});
+let galleryItems = [];
+try {
+    galleryItems = JSON.parse(localStorage.getItem("amirlandia_gallery_v2") || "[]");
+} catch (error) {
+    galleryItems = [];
+}
+function saveGallery() {
+    try {
+        localStorage.setItem("amirlandia_gallery_v2", JSON.stringify(galleryItems));
+        return true;
+    } catch (error) {
+        alert("Не удалось сохранить изображение. Попробуй файл меньшего размера.");
+        return false;
+    }
+}
+function renderGallery() {
+    const grid = document.getElementById("galleryGrid");
+    grid.innerHTML = "";
+    galleryItems.forEach((item, index) => {
+        const card = document.createElement("div");
+        card.className = "gallery-item";
+        const img = document.createElement("img");
+        img.src = item.src;
+        img.alt = item.title;
+        img.loading = "lazy";
+        const caption = document.createElement("div");
+        caption.className = "gallery-caption";
+        caption.textContent = item.title;
+        const button = document.createElement("button");
+        button.className = "delete-btn";
+        button.textContent = "Удалить";
+        button.addEventListener("click", () => {
+            galleryItems.splice(index, 1);
+            saveGallery();
+            renderGallery();
+        });
+        card.append(img, caption, button);
+        grid.appendChild(card);
+    });
+}
+document.getElementById("galleryForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const file = document.getElementById("photoFile").files[0];
+    const title = document.getElementById("photoTitle").value.trim();
+    if (!file) return;
+    if (!file.type.startsWith("image/")) {
+        alert("Выбери файл изображения.");
+        return;
+    }
+    if (file.size > 800 * 1024) {
+        alert("Изображение должно быть меньше 800 КБ, чтобы его было проще сохранить.");
+        return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+        galleryItems.push({
+            title: title,
+            src: reader.result
+        });
+        if (saveGallery()) {
+            renderGallery();
+            this.reset();
+        } else {
+            galleryItems.pop();
+        }
+    };
+    reader.readAsDataURL(file);
+});
+renderEvents();
+renderGallery();
+</script>
+</body>
+</html>
